@@ -3,6 +3,7 @@ const app = express();
 const userRoutes = require('./routes/userRoutes');
 const cors = require('cors');
 require('./config/db'); // MongoDB connection
+require('dotenv').config(); // load env 
 
 // Middleware
 app.use(express.json());
@@ -14,4 +15,4 @@ app.use('/api/users', userRoutes);
 // Start server
 app.listen(5000, () => {
     console.log("Server is running on port 5000...");
-});
+}); 

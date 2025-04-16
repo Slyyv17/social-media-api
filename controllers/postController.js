@@ -1,11 +1,10 @@
 const Post = require('../models/Post');
 const User = require('../models/User');
-const { post } = require('../routes/userRoutes');
 
 // Create a new post
 const createPost = async (req, res) => {
     try {
-        const { title, content, author, status } = req.body;
+        const { title, content, author, status, comments } = req.body;
 
         if (!title || !content || !author) {
             return res.status(400).json({ message: 'Title, content, and author are required' });
@@ -19,7 +18,8 @@ const createPost = async (req, res) => {
             title, 
             content,
             author,
-            status 
+            status,
+            comments,
         })
         res.status(201).json({ message: 'Post created successfully', post: newPost });
     }
